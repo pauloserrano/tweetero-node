@@ -14,13 +14,13 @@ app.use(express.json())
 app.post('/sign-up', (req, res) => {
     const { username, avatar } = req.body
 
-    if (!username || !avatar){
+    if (username.length <= 0 || avatar.length <= 0){
         res.status(400).send('Todos os campos são obrigatórios!')
         return
     }
 
     users.push({ username, avatar })
-    res.status(201).send({message: 'OK!'})
+    res.status(201).send('OK!')
 })
 
 
@@ -34,7 +34,7 @@ app.post('/tweets', (req, res) => {
     }
 
     tweets.unshift({ username, tweet })
-    res.status(201).send({message: 'OK!'})
+    res.status(201).send('OK!')
 })
 
 
@@ -42,7 +42,7 @@ app.get('/tweets', (req, res) => {
     let { page } = req.query
     if (!page) page = 1
     else if (page <= 0) {
-        res.status(400).send("Informe uma página válida!")
+        res.status(400).send('Informe uma página válida!')
         return
     }
 
@@ -63,7 +63,7 @@ app.get('/tweets/:USERNAME', (req, res) => {
     const { USERNAME } = req.params
     const user = users.find(user => user.username === USERNAME)
 
-    if (!USERNAME || !user){
+    if (USERNAME.length <= 0 || !user){
         res.status(400).send('Usuário não encontrado!')
         return
     }
