@@ -64,7 +64,7 @@ app.get('/tweets/:USERNAME', (req, res) => {
     const user = users.find(user => user.username === USERNAME)
 
     if (USERNAME.length <= 0 || !user){
-        res.status(400).send('Usuário não encontrado!')
+        res.status(404).send('Usuário não encontrado!')
         return
     }
 
