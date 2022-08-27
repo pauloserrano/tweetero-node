@@ -2,5 +2,7 @@
 /assets
 /css
 /node_modules
-/index.html
-/script.js
+
+.gitignore
+index.html
+script.js
